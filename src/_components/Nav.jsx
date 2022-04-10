@@ -21,9 +21,6 @@ function Nav() {
                 <span className="navbar-text ">
                     {account.user_name}
                 </span>
-                <span className="navbar-text ">
-                    {account.access_token}
-                </span>
             </div>
             
         </nav>
