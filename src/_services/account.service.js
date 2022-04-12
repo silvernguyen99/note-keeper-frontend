@@ -17,12 +17,12 @@ export const accountService = {
 };
 
 async function login() {
-    // login with facebook then authenticate with the API to get a JWT auth token
-    // const { authResponse } = await new Promise(window.FB.login);
-    // if (!authResponse) return;
+    // login with facebook then authenticate with the API to get a access token
+    const { authResponse } = await new Promise(window.FB.login);
+    if (!authResponse) return;
 
-    // await apiAuthenticate(authResponse.accessToken);
-    await apiAuthenticate("EAAKkqHqwdjEBAKgGOsmDLWoasI9ZBHcDpjTf4z17OTmEJzEQX5N2TW8T98as0gJDLEdbAwPbxsK3WCCPCp83jgZAqlcZA3IKv82MZBQDAuPPCISofgSrZAHGvMqNdkHSo9I2L75BUhqZCTW0CV5E3xZCxnNyZADFFIlk2iDdgxw1GOfL5TI1xnePMPmlYRKXssFPh9Fh1AxinTLnLZCEfFIdc"); 
+    await apiAuthenticate(authResponse.accessToken);
+    // await apiAuthenticate("EAAKkqHqwdjEBAKgGOsmDLWoasI9ZBHcDpjTf4z17OTmEJzEQX5N2TW8T98as0gJDLEdbAwPbxsK3WCCPCp83jgZAqlcZA3IKv82MZBQDAuPPCISofgSrZAHGvMqNdkHSo9I2L75BUhqZCTW0CV5E3xZCxnNyZADFFIlk2iDdgxw1GOfL5TI1xnePMPmlYRKXssFPh9Fh1AxinTLnLZCEfFIdc"); 
     
 
     // get return url from location state or default to home page
