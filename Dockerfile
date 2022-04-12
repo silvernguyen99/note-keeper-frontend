@@ -8,5 +8,5 @@ COPY ./ ./
 ARG REACT_APP_FACEBOOK_APP_ID
 ARG REACT_APP_NOTE_KEEPER_API
 
-EXPOSE 3000
-CMD [ "npm", "start", "-p", "3000" ]
+EXPOSE 80
+CMD [ "npm", "start"]
