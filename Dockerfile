@@ -9,4 +9,4 @@ ARG REACT_APP_FACEBOOK_APP_ID
 ARG REACT_APP_NOTE_KEEPER_API
 
 EXPOSE 80
-CMD [ "npm", "start"]
+CMD [ "npm", "start", "-p", "80"]
