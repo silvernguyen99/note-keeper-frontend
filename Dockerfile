@@ -1,13 +1,26 @@
-FROM node:12.6.0
+FROM node:14-alpine AS builder
+
 WORKDIR /app
-COPY package.json ./
-RUN npm install
 
-COPY ./ ./
+COPY package.json package-lock.json ./
+RUN npm ci --only=production
 
-ARG REACT_APP_FACEBOOK_APP_ID
-ARG REACT_APP_NOTE_KEEPER_API
+COPY . .
+RUN npm run build
 
-RUN npm build
+FROM node:14-alpine
+ENV NODE_ENV=production
 
-CMD [ "npm", "start" ]
+# ARG REACT_APP_FACEBOOK_APP_ID
+# ARG REACT_APP_NOTE_KEEPER_API
+
+WORKDIR /app
+COPY --from=builder /app/build ./
+COPY cert.pem key.pem ./
+
+RUN npm install -g http-server
+
+ENV PORT=443
+EXPOSE 443
+
+CMD ["http-server", "-S"]
